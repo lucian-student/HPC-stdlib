@@ -2,8 +2,10 @@
 
 add_executable(unit_tests
     test_ring_buffer.cpp
+    test_lock_free_ring_buffer.cpp
 )
 
+target_compile_options(unit_tests PRIVATE -Wno-interference-size)
 
 target_link_libraries(unit_tests PRIVATE 
     GTest::gtest

@@ -24,7 +24,7 @@ namespace hpc_stdlib
         ~RingBuffer() noexcept
         {
             while (!empty())
-                (void)pop();
+                static_cast<void>(pop());
         }
 
         [[nodiscard]] bool empty() const noexcept
