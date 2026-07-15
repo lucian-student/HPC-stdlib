@@ -28,15 +28,8 @@ namespace hpc_stdlib
 
         ~RingBuffer() noexcept
         {
-        }
-
-        RingBuffer(const RingBuffer &other)
-        {
-        }
-
-        RingBuffer &operator=(const RingBuffer &other)
-        {
-            return this;
+            while (!empty())
+                (void)pop();
         }
 
         [[nodiscard]] bool empty() const noexcept
@@ -103,17 +96,6 @@ namespace hpc_stdlib
             return {};
         }
 
-        void swap(RingBuffer &other)
-        {
-            /*
-            Problem u cant really swap a static buffer
-            */
-
-            std::swap(other._head, _head);
-            std::swap(other._tail, _tail);
-            std::swap(other._size, _size);
-        }
-
     private:
         T *get_ptr(std::size_t index)
         {
@@ -130,8 +112,6 @@ namespace hpc_stdlib
             _head = (_head + 1) & (N - 1);
         }
 
-        /*
-         */
         size_t _head;
         size_t _tail;
         size_t _size;
