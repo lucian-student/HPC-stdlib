@@ -5,17 +5,12 @@
 #include <cstddef>
 #include <memory>
 #include <hpc_stdlib/concepts.h>
+#include <hpc_stdlib/ring_buffer_error.h>
 
 namespace hpc_stdlib
 {
 
-    enum class RingBufferError : uint8_t
-    {
-        Full,
-        Empty,
-        InvalidAlignment,
-        AllocationFailed
-    };
+    
 
     template <typename T, std::size_t N>
         requires PowerOfTwo<N>
