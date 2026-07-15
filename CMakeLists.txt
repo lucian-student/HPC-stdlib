@@ -7,3 +7,12 @@ project(HPCStdlib)
 
 
 add_subdirectory(src)
+
+
+option(BUILD_TESTING "Build unit tests" ON)
+
+if(BUILD_TESTING)
+    enable_testing()
+    find_package(GTest CONFIG REQUIRED)
+    add_subdirectory(tests)
+endif()
